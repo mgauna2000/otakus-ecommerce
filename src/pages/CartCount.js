@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const CartCount = () => {
 
-  const { cartListAmount, totalPriceAmount } = useContext(CartContext);
+  const { cartListAmount, totalPriceAmount, cleanCartProducts } = useContext(CartContext);
 
   const navigate = useNavigate()
   
@@ -31,23 +31,29 @@ const CartCount = () => {
     total: totalPriceAmount
   })  
 
+  const [success, setSuccess] = useState()
+
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log("submit", formValue)
     setOrder({...order, buyer: formValue})
     saveData({...order, buyer: formValue})
-    alert("su orden se genero con exito")
-    navigate("/")
   }
 
   const handleChange = (e) => {
     setFormValue({...formValue, [e.target.name]: e.target.value})
   }
 
+  const finishOrder = () => {
+    navigate("/")
+  }
+
   const saveData = async (newOrder) => {
     const orderFirebase = collection(db, "ordenes")
     const orderDoc = await addDoc(orderFirebase, newOrder)
     console.log(orderDoc)
+    setSuccess(orderDoc.id)
+    cleanCartProducts()
   }
 
   return (
@@ -62,15 +68,12 @@ const CartCount = () => {
               <th>Nombre</th>
               <th>Precio</th>
               <th>Cantidad</th>
-              <th>Total</th>
               {/* <th>Quitar</th> */}
             </tr>
           </thead>
           <tbody>
             {cartListAmount.map((item) => {
               const { id, title, image, price, amount } = item;
-              // const { id, title, image, price, amount } = item;
-
               return (
                 <tr key={id}>
                   <td>
@@ -81,13 +84,7 @@ const CartCount = () => {
                   </td>
                   <td className="pt-5">{title}</td>
                   <td className="pt-5">$ {price}</td>
-                  {/* tengo que hacer que se sume el precio segun la cantidad elegida  */}
-                  {/* <td className="pt-5">{amount}</td> */}
                   <td className="pt-5">{amount}</td>
-                  <td className="pt-5">$ 2000</td>
-                  {/* <td className="text-center pt-5">
-                    <i className="fa-solid fa-trash" style={{cursor: "pointer"}} onClick={() => removeProduct(id)}></i>
-                  </td> */}
                 </tr>
               );
             })}
@@ -129,7 +126,15 @@ const CartCount = () => {
                 ></button>
               </div>
               <div className="modal-body">
-                <form className="row g-3" onSubmit={handleSubmit}>
+                {success ? (
+                  <div>
+                    La orden se genero con exito!! Numero de orden: {success}
+                    <button type="button" data-bs-dismiss="modal" onClick={finishOrder} className="btn btn-primary mb-3">
+                      Aceptar
+                    </button>
+                  </div>
+                ) : (
+                  <form className="row g-3" onSubmit={handleSubmit}>
                   <div className="col-auto">
                     <label for="inputName" className="visually-hidden">
                       Nombre y Apellido
@@ -174,23 +179,15 @@ const CartCount = () => {
                   </div>
 
                   <div className="col-auto">
-                    <button type="submit" data-bs-dismiss="modal" className="btn btn-primary mb-3">
+                    <button type="submit" className="btn btn-primary mb-3">
                       Enviar
                     </button>
                   </div>
                 </form>
+                )}
+                
               </div>
               <div className="modal-footer">
-                {/* <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Close
-                </button> */}
-                {/* <button type="button" class="btn btn-primary">
-                  Save changes
-                </button> */}
               </div>
             </div>
           </div>
