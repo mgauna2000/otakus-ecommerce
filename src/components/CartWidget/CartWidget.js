@@ -12,7 +12,7 @@ const CartWidget = () => {
         className="fa-solid fa-cart-shopping m-4"
         data-bs-target="#exampleModal"
         data-bs-toggle="modal"
-        style={{ cursor: "pointer" }}
+        style={{ cursor: "pointer", color: "#fff" }}
       ></i>
       {/* <!-- Modal --> */}
       <div

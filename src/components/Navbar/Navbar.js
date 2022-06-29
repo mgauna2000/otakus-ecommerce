@@ -1,14 +1,15 @@
 import React from "react";
 import CartWidget from "../CartWidget/CartWidget";
 import { Link } from "react-router-dom";
+import "../Navbar/Navbar.css"
 
 export const Navbar = () => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light bg-dark">
         <div className="container-fluid">
           <Link to="/" className="navbar-brand">
-            <img src="otakus.png" alt="" style={{ height: "50px" }} />
+            <img src="logo.png" alt="" style={{ height: "50px", paddingLeft: "100px" }} />
           </Link>
           <button
             className="navbar-toggler"
@@ -36,7 +37,6 @@ export const Navbar = () => {
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
-                  href="#"
                   id="navbarDropdown"
                   role="button"
                   data-bs-toggle="dropdown"
@@ -64,7 +64,7 @@ export const Navbar = () => {
               </li>
             </ul>
 
-            <form className="d-flex">
+            {/* <form className="d-flex">
               <input
                 className="form-control me-2"
                 type="search"
@@ -74,7 +74,7 @@ export const Navbar = () => {
               <button className="btn btn-outline-dark" type="submit">
                 Buscar
               </button>
-            </form>
+            </form> */}
             <CartWidget />
           </div>
         </div>

@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+
+/* .navbar {
+    height: 120px;
+} */
+.nav-item > .dropdown-item {
+    color: #fff;
+    font-family: 'Black Ops One', cursive;
+    font-size: 24px;
+}
+.dropdown-item:hover {
+    background-color: #000;
+}
+.dropdown-item:focus {
+    background-color: #000;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(0,0,0,.55);
+    color: #fff;
+    font-family: 'Black Ops One', cursive;
+    font-size: 24px;
+}
+.navbar-nav {
+    padding: 0 50px;
+}

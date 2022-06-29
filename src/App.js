@@ -13,6 +13,7 @@ import ProductsList from "./pages/ProductsList";
 import { CartProvider } from "./context/CardContext";
 import Cart from "./pages/Cart";
 import CartCount from "./pages/CartCount";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
       {/* <Item/> */}
       {/* <ItemDetailContainer /> */}
       </CartProvider>
+      <Footer/>
     </div>
   );
 }
