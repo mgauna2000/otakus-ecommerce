@@ -1,19 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+
 .card {
     width: 400px;
-    height: 600px;
+    height: 550px;
     box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.23);
 }
 .card img {
     height: 380px;
 }
-.card p {
-    font-weight: 600;
-    border: 1px solid #000;
-    margin-top: 10px;
-}
 .card h5 {
     font-size: 30px;
+    font-family: 'Bungee', cursive;
 }
+.card a {
+    color: #fff;
+}
+.card button {
+    margin-top: 20px;
+    text-transform: capitalize;
+    font-family: 'Bungee', cursive;
+    font-size: 18px;
+}
+.card button:hover {
+    background-color: #000;
+}
+
+
 @media only screen and (min-width: 768px) and (max-width: 1400px) {
     .grid {
         display: grid;

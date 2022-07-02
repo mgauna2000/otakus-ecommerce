@@ -1,6 +1,13 @@
 import React from "react";
+import CartContext from '../../context/CardContext'
+import { useContext } from "react";
+import "../ItemCount/ItemCount.css"
 
-const ItemCount = ({amount, updateAmount, stock, setShowButton}) => {
+const ItemCount = ({amount, updateAmount, stock, setShowButton, data}) => {
+
+  const { id, image, title, desc, price } = data
+
+  const { addProductToCartAmount } = useContext(CartContext)
 
     const addCount = () => {
         if(amount < stock) {
@@ -13,6 +20,10 @@ const ItemCount = ({amount, updateAmount, stock, setShowButton}) => {
             updateAmount(amount - 1)
         }
     }
+    const addCart = () => {
+      setShowButton(true)
+      addProductToCartAmount({ id, image, title, desc, price, amount })
+    }
 
   return (
     <>
@@ -21,8 +32,8 @@ const ItemCount = ({amount, updateAmount, stock, setShowButton}) => {
           <div className="col-5">
             <button className="btn btn-primary" onClick={removeCount}>-</button>
           </div>
-          <div className="col-2">
-            <p>{amount}</p>
+          <div className="col-2 mt-3">
+            <h1 className="text-center">{amount}</h1>
           </div>
           <div className="col-5">
             <button className="btn btn-primary" onClick={addCount}>+</button>
@@ -30,7 +41,7 @@ const ItemCount = ({amount, updateAmount, stock, setShowButton}) => {
         </div>
         <button
               type="button"
-              onClick={() => setShowButton(true)}
+              onClick={addCart}
               className="btn btn-dark btn-add"
             >
               Agregar al carrito

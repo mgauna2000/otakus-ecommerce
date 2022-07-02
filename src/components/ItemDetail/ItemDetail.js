@@ -8,19 +8,12 @@ import { useContext } from "react";
 
 const ItemDetail = ({ data }) => {
   const { id, image, title, desc, price, stock } = data
-  // max-width: 540px;
 
   const { addProductToCartAmount } = useContext(CartContext)
-
-  // seguir en 01:10:00 el video de context -------------
 
   const [amount, setAmount] = useState(1);
   const [showButton, setShowButton] = useState(false);
 
-  // const onAdd = () => {
-  //   console.log("prducto a agregar", data);
-  //   console.log("cantidad elegida", amount);
-  // };
   return (
     <div className="card mb-3 mt-4" style={{ width: "100%", height: "auto" }}>
       <div className="row g-0">
@@ -44,20 +37,24 @@ const ItemDetail = ({ data }) => {
                 updateAmount={setAmount}
                 setShowButton={setShowButton}
                 stock={stock}
+                data={data}
               />
             ) : (
+              <>
               <button
                 type="button"
-                // tengo que hacer otro componente cart
-                // para cuando elige un item y su cantidad sino se me mezcla todo jeje
-                // y queda mas ordenado uno por itemDetail y el otro por ItemListContainer
-                // sin la cantidad porque no da la opcion de elegir cantidad desde el home
-                // onClick={() => addProductToCart({ id, image, title, desc, price, stock })}
                 onClick={() => addProductToCartAmount({ id, image, title, desc, price, amount, stock })}
                 className="btn btn-dark btn-add"
               >
                 <Link to="/cartAmount">Terminar mi compra</Link>
               </button>
+              <button
+                type="button"
+                className="btn btn-dark btn-add"
+              >
+                <Link to="/">Seguir Comprando</Link>
+              </button>
+              </>
             )}
           </div>
         </div>

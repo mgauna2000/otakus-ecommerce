@@ -34,15 +34,17 @@ const CartProvider = ({children}) => {
       setTotalPriceAmount(0)
     }
 
-    const removeProduct = (id) => {
-      const copyCartListItems = [...cartListItems]
-      const newCartListItems = copyCartListItems.filter(cartListItems => cartListItems.id !== id)
-      console.log("items remove", copyCartListItems[0].price)
-      // setTotalPrice(totalPrice - copyCartListItems[0].price)
-      //tengo que corregir porque me agarra el primer precio del array de los productos y tendria que hacer
-      //que tome el del producto borrado ¿si tenes alguna solucion joya ya me explota la cabeza de ir entre componentes xd?
-      setCartListItems(newCartListItems)
-      console.log(totalPrice)
+    const removeProduct = (id, price, amount) => {
+      const copyCartListItems = [...cartListAmount]
+      let index = copyCartListItems.findIndex((product) => product.id === id)
+      copyCartListItems.splice(index, 1)
+      setCartListAmount([...copyCartListItems])
+      setTotalPriceAmount(totalPriceAmount - price * amount)
+      console.log(price, amount)
+      // const newCartListItems = copyCartListItems.filter(cartListItems => cartListItems.id !== id)
+      // console.log("items remove", copyCartListItems[0].price)
+      // setCartListAmount(newCartListItems)
+      // console.log(totalPrice)
     }
 
     const data = {

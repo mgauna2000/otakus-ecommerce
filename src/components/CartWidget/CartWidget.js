@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import CartContext from "../../context/CardContext";
 
 const CartWidget = () => {
-  const { cartListItems, removeProduct } = useContext(CartContext);
+  const { cartListAmount, removeProduct } = useContext(CartContext);
 
   return (
     <>
@@ -36,11 +36,11 @@ const CartWidget = () => {
               ></button>
             </div>
             <div className="modal-body">
-              {cartListItems.length === 0 && (
+              {cartListAmount.length === 0 && (
                 <p>No hay productos agregados al carrito</p>
               )}
-              {cartListItems.map((item) => {
-                const { id, title, image, price } = item;
+              {cartListAmount.map((item) => {
+                const { id, title, image, price, amount } = item;
                 return (
                   <div
                     className="products-container"
@@ -58,7 +58,7 @@ const CartWidget = () => {
                       <p className="card-text">
                         <small className="text-muted">$ {price}</small>
                       </p>
-                      <i className="fa-solid fa-trash"style={{cursor: "pointer"}} onClick={() => removeProduct(id)}></i>
+                      <i className="fa-solid fa-trash"style={{cursor: "pointer"}} onClick={() => removeProduct(id, price, amount)}></i>
                     </div>
                   </div>
                 );
@@ -73,7 +73,7 @@ const CartWidget = () => {
                 Cerrar
               </button>
               <button type="button" className="btn btn-outline-primary" data-bs-dismiss="modal">
-               <Link to="/cart">
+               <Link to="/cartAmount">
                 Terminar la compra
                 </Link>
               </button>
