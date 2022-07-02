@@ -91,6 +91,9 @@ const CartCount = () => {
           </tbody>
         </table>
         <div>
+        <button type="button" className="btn btn-outline-dark mt-4" onClick={() => cleanCartProducts()}>
+               Eliminar carrito
+              </button>
           <h2 className="text-center">Total</h2>
           <p>$ {totalPriceAmount}</p>
         </div>
