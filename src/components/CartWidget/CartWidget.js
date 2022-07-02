@@ -43,17 +43,19 @@ const CartWidget = () => {
                 const { id, title, image, price, amount } = item;
                 return (
                   <div
-                    className="products-container"
+                    className="products-container text-center"
                     key={id}
-                    style={{ display: "flex" }}
+                    // style={{ display: "flex" }}
                   >
-                    <img
-                      src={`./${image}`}
+                    {/* <img
+                      src={`${image}`}
                       className="img-fluid rounded-start"
                       alt="..."
                       style={{ width: "150px", height: "150px" }}
-                    />
-                    <div style={{ flexDirection: "column" }}>
+                    /> */}
+                    <div 
+                    // style={{ flexDirection: "column" }}
+                    >
                       <h5 className="card-title">{title}</h5>
                       <p className="card-text">
                         <small className="text-muted">$ {price}</small>
