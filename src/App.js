@@ -12,7 +12,6 @@ import Detalle from "./pages/Detalle";
 import ProductsList from "./pages/ProductsList";
 import { CartProvider } from "./context/CardContext";
 import CartCount from "./pages/CartCount";
-import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -30,7 +29,7 @@ function App() {
         </Routes>
       </BrowserRouter>
       </CartProvider>
-      <Footer/>
+      
     </div>
   );
 }

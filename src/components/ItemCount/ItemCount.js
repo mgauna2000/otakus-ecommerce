@@ -42,13 +42,13 @@ const ItemCount = ({amount, updateAmount, stock, setShowButton, data}) => {
       <div className="container m-1">
         <div className="row align-items">
           <div className="col-5">
-            <button className="btn btn-primary" onClick={removeCount}>-</button>
+            <button className="btn btn-outline-dark" onClick={removeCount}>-</button>
           </div>
           <div className="col-2 mt-3">
             <h1 className="text-center">{amount}</h1>
           </div>
           <div className="col-5">
-            <button className="btn btn-primary" onClick={addCount}>+</button>
+            <button className="btn btn-outline-dark" onClick={addCount}>+</button>
           </div>
         </div>
         <button

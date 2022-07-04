@@ -57,7 +57,7 @@ const CartWidget = () => {
                     <div 
                     // style={{ flexDirection: "column" }}
                     >
-                      <h5 className="card-title">{title}</h5>
+                      <h4 className="card-title">{title}</h4>
                       <p className="card-text">
                         <small className="text-muted">$ {price}</small>
                       </p>
