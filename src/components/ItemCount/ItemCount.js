@@ -1,6 +1,8 @@
 import React from "react";
 import CartContext from '../../context/CardContext'
 import { useContext } from "react";
+import swal from 'sweetalert';
+import Icon from "./icon.jpg"
 import "../ItemCount/ItemCount.css"
 
 const ItemCount = ({amount, updateAmount, stock, setShowButton, data}) => {
@@ -8,6 +10,8 @@ const ItemCount = ({amount, updateAmount, stock, setShowButton, data}) => {
   const { id, image, title, desc, price } = data
 
   const { addProductToCartAmount } = useContext(CartContext)
+
+  const imgUrl = Icon
 
     const addCount = () => {
         if(amount < stock) {
@@ -23,6 +27,14 @@ const ItemCount = ({amount, updateAmount, stock, setShowButton, data}) => {
     const addCart = () => {
       setShowButton(true)
       addProductToCartAmount({ id, image, title, desc, price, amount })
+      swal({
+        title: "Se agrego al carrito!",
+        text: "Arigato!",
+        icon: imgUrl,
+        button: false,
+        timerProgressBar: true,
+        timer: 1500
+      })
     }
 
   return (

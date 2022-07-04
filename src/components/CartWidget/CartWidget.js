@@ -2,6 +2,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import CartContext from "../../context/CardContext";
+import "./CartWidget.css"
 
 const CartWidget = () => {
   const { cartListAmount, removeProduct } = useContext(CartContext);
@@ -25,7 +26,7 @@ const CartWidget = () => {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
+              <h5 className="modal-title" id="exampleModalLabel" >
                 Productos agregados al carrito
               </h5>
               <button
@@ -74,8 +75,8 @@ const CartWidget = () => {
               >
                 Cerrar
               </button>
-              <button type="button" className="btn btn-outline-primary" data-bs-dismiss="modal">
-               <Link to="/cartAmount">
+              <button type="button" className="btn btn-outline-success" data-bs-dismiss="modal">
+               <Link style={{textDecoration: "none", color: "#000"}} to="/cartAmount">
                 Terminar la compra
                 </Link>
               </button>
