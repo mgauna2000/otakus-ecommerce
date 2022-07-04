@@ -131,8 +131,9 @@ const CartCount = () => {
               <div className="modal-body">
                 {success ? (
                   <div>
-                    La orden se genero con exito!! Numero de orden: {success}
-                    <button type="button" data-bs-dismiss="modal" onClick={finishOrder} className="btn btn-primary mb-3">
+                    <h3>La orden se genero con exito!!</h3>
+                    <p>Número de orden: {success}</p> 
+                    <button type="button" data-bs-dismiss="modal" onClick={finishOrder} className="btn btn-outline-danger mb-3">
                       Aceptar
                     </button>
                   </div>
