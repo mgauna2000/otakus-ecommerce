@@ -1,7 +1,7 @@
 import React from "react";
 import CartWidget from "../CartWidget/CartWidget";
 import { Link } from "react-router-dom";
-import "../Navbar/Navbar.css"
+import "../Navbar/Navbar.css";
 
 export const Navbar = () => {
   return (
@@ -9,7 +9,11 @@ export const Navbar = () => {
       <nav className="navbar navbar-expand-lg navbar-light bg-dark">
         <div className="container-fluid">
           <Link to="/" className="navbar-brand">
-            <img src="logo.png" alt="" style={{ height: "50px", paddingLeft: "100px" }} />
+            <img
+              src="logo.png"
+              alt=""
+              style={{ height: "50px", paddingLeft: "100px" }}
+            />
           </Link>
           <button
             className="navbar-toggler"
@@ -51,30 +55,18 @@ export const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                  <Link to="/products/cuadros" className="dropdown-item">
+                    <Link to="/products/cuadros" className="dropdown-item">
                       Cuadros
                     </Link>
                   </li>
                   <li>
-                  <Link to="/products/funkos" className="dropdown-item">
+                    <Link to="/products/funkos" className="dropdown-item">
                       Funko Pop's
                     </Link>
                   </li>
                 </ul>
               </li>
             </ul>
-
-            {/* <form className="d-flex">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Buscar..."
-                aria-label="Search"
-              />
-              <button className="btn btn-outline-dark" type="submit">
-                Buscar
-              </button>
-            </form> */}
             <CartWidget />
           </div>
         </div>

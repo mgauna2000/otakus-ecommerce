@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ItemCount from "../ItemCount/ItemCount";
 import "./ItemDetail.css";
-import CartContext from '../../context/CardContext'
+import CartContext from "../../context/CardContext";
 import { useContext } from "react";
 
-
 const ItemDetail = ({ data }) => {
-  const { id, image, title, desc, price, stock } = data
+  const { id, image, title, desc, price, stock } = data;
 
-  const { addProductToCartAmount } = useContext(CartContext)
+  const { addProductToCartAmount } = useContext(CartContext);
 
   const [amount, setAmount] = useState(1);
   const [showButton, setShowButton] = useState(false);
@@ -41,19 +40,26 @@ const ItemDetail = ({ data }) => {
               />
             ) : (
               <>
-              <button
-                type="button"
-                onClick={() => addProductToCartAmount({ id, image, title, desc, price, amount, stock })}
-                className="btn btn-dark btn-add"
-              >
-                <Link to="/cartAmount">Terminar mi compra</Link>
-              </button>
-              <button
-                type="button"
-                className="btn btn-dark btn-add"
-              >
-                <Link to="/">Seguir Comprando</Link>
-              </button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    addProductToCartAmount({
+                      id,
+                      image,
+                      title,
+                      desc,
+                      price,
+                      amount,
+                      stock,
+                    })
+                  }
+                  className="btn btn-dark btn-add"
+                >
+                  <Link to="/cartAmount">Terminar mi compra</Link>
+                </button>
+                <button type="button" className="btn btn-dark btn-add">
+                  <Link to="/">Seguir Comprando</Link>
+                </button>
               </>
             )}
           </div>

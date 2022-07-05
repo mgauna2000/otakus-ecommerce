@@ -1,8 +1,7 @@
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import CartContext from "../../context/CardContext";
-import "./CartWidget.css"
+import "./CartWidget.css";
 
 const CartWidget = () => {
   const { cartListAmount, removeProduct } = useContext(CartContext);
@@ -26,7 +25,7 @@ const CartWidget = () => {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel" >
+              <h5 className="modal-title" id="exampleModalLabel">
                 Productos agregados al carrito
               </h5>
               <button
@@ -43,25 +42,17 @@ const CartWidget = () => {
               {cartListAmount.map((item) => {
                 const { id, title, image, price, amount } = item;
                 return (
-                  <div
-                    className="products-container text-center"
-                    key={id}
-                    // style={{ display: "flex" }}
-                  >
-                    {/* <img
-                      src={`${image}`}
-                      className="img-fluid rounded-start"
-                      alt="..."
-                      style={{ width: "150px", height: "150px" }}
-                    /> */}
-                    <div 
-                    // style={{ flexDirection: "column" }}
-                    >
+                  <div className="products-container text-center" key={id}>
+                    <div>
                       <h4 className="card-title">{title}</h4>
                       <p className="card-text">
                         <small className="text-muted">$ {price}</small>
                       </p>
-                      <i className="fa-solid fa-trash"style={{cursor: "pointer"}} onClick={() => removeProduct(id, price, amount)}></i>
+                      <i
+                        className="fa-solid fa-trash"
+                        style={{ cursor: "pointer" }}
+                        onClick={() => removeProduct(id, price, amount)}
+                      ></i>
                     </div>
                   </div>
                 );
@@ -75,9 +66,16 @@ const CartWidget = () => {
               >
                 Cerrar
               </button>
-              <button type="button" className="btn btn-outline-success" data-bs-dismiss="modal">
-               <Link style={{textDecoration: "none", color: "#000"}} to="/cartAmount">
-                Terminar la compra
+              <button
+                type="button"
+                className="btn btn-outline-success"
+                data-bs-dismiss="modal"
+              >
+                <Link
+                  style={{ textDecoration: "none", color: "#000" }}
+                  to="/cartAmount"
+                >
+                  Terminar la compra
                 </Link>
               </button>
             </div>

@@ -1,9 +1,5 @@
 import "./App.css";
-// import { CardList } from './components/CardList/CardList';
-// import Item from './components/Item/Item';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
-// import ItemCount from './components/ItemCount/ItemCount';
 import { Navbar } from "./components/Navbar/Navbar";
 import Home from "./pages/Home";
 import Nosotros from "./pages/Nosotros";
@@ -17,19 +13,22 @@ function App() {
   return (
     <div className="App">
       <CartProvider>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/nosotros" element={<Nosotros />} />
-          <Route exact path="/products/:category" element={<ProductsList />} />
-          <Route exact path="/productos/:id" element={<Detalle />} />
-          <Route exact path="/cartAmount" element={<CartCount />} />
-          <Route exact path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/nosotros" element={<Nosotros />} />
+            <Route
+              exact
+              path="/products/:category"
+              element={<ProductsList />}
+            />
+            <Route exact path="/productos/:id" element={<Detalle />} />
+            <Route exact path="/cartAmount" element={<CartCount />} />
+            <Route exact path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
       </CartProvider>
-      
     </div>
   );
 }

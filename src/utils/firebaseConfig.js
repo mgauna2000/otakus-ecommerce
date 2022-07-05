@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore"
+import { getFirestore } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -11,12 +11,12 @@ const firebaseConfig = {
   projectId: "ecommerce-otaku",
   storageBucket: "ecommerce-otaku.appspot.com",
   messagingSenderId: "36060753600",
-  appId: "1:36060753600:web:8839581af22344735f4725"
+  appId: "1:36060753600:web:8839581af22344735f4725",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-const db = getFirestore(app)
+const db = getFirestore(app);
 
-export default db
+export default db;

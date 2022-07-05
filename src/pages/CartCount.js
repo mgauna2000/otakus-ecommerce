@@ -1,21 +1,21 @@
 import React, { useContext } from "react";
 import { useState } from "react";
 import CartContext from "../context/CardContext";
-import { addDoc, collection } from "firebase/firestore"
+import { addDoc, collection } from "firebase/firestore";
 import db from "../utils/firebaseConfig";
 import { useNavigate } from "react-router-dom";
 
 const CartCount = () => {
+  const { cartListAmount, totalPriceAmount, cleanCartProducts } =
+    useContext(CartContext);
 
-  const { cartListAmount, totalPriceAmount, cleanCartProducts } = useContext(CartContext);
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
-  
   const [formValue, setFormValue] = useState({
-    name: '',
-    phone: '',
-    email: ''
-  })
+    name: "",
+    phone: "",
+    email: "",
+  });
 
   const [order, setOrder] = useState({
     buyer: {},
@@ -24,41 +24,40 @@ const CartCount = () => {
         id: item.id,
         title: item.title,
         price: item.price,
-        amount: item.amount
-      }
+        amount: item.amount,
+      };
     }),
     date: new Date(),
-    total: totalPriceAmount
-  })  
+    total: totalPriceAmount,
+  });
 
-  const [success, setSuccess] = useState()
+  const [success, setSuccess] = useState();
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log("submit", formValue)
-    setOrder({...order, buyer: formValue})
-    saveData({...order, buyer: formValue})
-  }
+    e.preventDefault();
+    console.log("submit", formValue);
+    setOrder({ ...order, buyer: formValue });
+    saveData({ ...order, buyer: formValue });
+  };
 
   const handleChange = (e) => {
-    setFormValue({...formValue, [e.target.name]: e.target.value})
-  }
+    setFormValue({ ...formValue, [e.target.name]: e.target.value });
+  };
 
   const finishOrder = () => {
-    navigate("/")
-  }
+    navigate("/");
+  };
 
   const saveData = async (newOrder) => {
-    const orderFirebase = collection(db, "ordenes")
-    const orderDoc = await addDoc(orderFirebase, newOrder)
-    console.log(orderDoc)
-    setSuccess(orderDoc.id)
-    cleanCartProducts()
-  }
+    const orderFirebase = collection(db, "ordenes");
+    const orderDoc = await addDoc(orderFirebase, newOrder);
+    console.log(orderDoc);
+    setSuccess(orderDoc.id);
+    cleanCartProducts();
+  };
 
   return (
     <>
-    {/* {console.log("orden: ", order)} */}
       <div className="table-responsive">
         <h2 className="m-4">Productos agregados</h2>
         <table className="table table-bordered">
@@ -68,7 +67,6 @@ const CartCount = () => {
               <th>Nombre</th>
               <th>Precio</th>
               <th>Cantidad</th>
-              {/* <th>Quitar</th> */}
             </tr>
           </thead>
           <tbody>
@@ -91,9 +89,13 @@ const CartCount = () => {
           </tbody>
         </table>
         <div>
-        <button type="button" className="btn btn-outline-dark mt-4" onClick={() => cleanCartProducts()}>
-               Eliminar carrito
-              </button>
+          <button
+            type="button"
+            className="btn btn-outline-dark mt-4"
+            onClick={() => cleanCartProducts()}
+          >
+            Eliminar carrito
+          </button>
           <h2 className="text-center">Total</h2>
           <p>$ {totalPriceAmount}</p>
         </div>
@@ -132,67 +134,70 @@ const CartCount = () => {
                 {success ? (
                   <div>
                     <h3>La orden se genero con exito!!</h3>
-                    <p>Número de orden: {success}</p> 
-                    <button type="button" data-bs-dismiss="modal" onClick={finishOrder} className="btn btn-outline-danger mb-3">
+                    <p>Número de orden: {success}</p>
+                    <button
+                      type="button"
+                      data-bs-dismiss="modal"
+                      onClick={finishOrder}
+                      className="btn btn-outline-danger mb-3"
+                    >
                       Aceptar
                     </button>
                   </div>
                 ) : (
                   <form className="row g-3" onSubmit={handleSubmit}>
-                  <div className="col-auto">
-                    <label for="inputName" className="visually-hidden">
-                      Nombre y Apellido
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formValue.name}
-                      className="form-control"
-                      id="inputName"
-                      placeholder="Nombre y Apellido"
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div className="col-auto">
-                    <label for="inputPhone" className="visually-hidden">
-                      Telefono
-                    </label>
-                    <input
-                      type="number"
-                      name="phone"
-                      value={formValue.phone}
-                      className="form-control"
-                      id="inputPhone"
-                      placeholder="Telefono"
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div className="col-auto">
-                    <label for="inputEmail" className="visually-hidden">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formValue.email}
-                      className="form-control"
-                      id="inputEmail"
-                      placeholder="Email"
-                      onChange={handleChange}
-                    />
-                  </div>
+                    <div className="col-auto">
+                      <label for="inputName" className="visually-hidden">
+                        Nombre y Apellido
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        value={formValue.name}
+                        className="form-control"
+                        id="inputName"
+                        placeholder="Nombre y Apellido"
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="col-auto">
+                      <label for="inputPhone" className="visually-hidden">
+                        Telefono
+                      </label>
+                      <input
+                        type="number"
+                        name="phone"
+                        value={formValue.phone}
+                        className="form-control"
+                        id="inputPhone"
+                        placeholder="Telefono"
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="col-auto">
+                      <label for="inputEmail" className="visually-hidden">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={formValue.email}
+                        className="form-control"
+                        id="inputEmail"
+                        placeholder="Email"
+                        onChange={handleChange}
+                      />
+                    </div>
 
-                  <div className="col-auto">
-                    <button type="submit" className="btn btn-primary mb-3">
-                      Enviar
-                    </button>
-                  </div>
-                </form>
+                    <div className="col-auto">
+                      <button type="submit" className="btn btn-primary mb-3">
+                        Enviar
+                      </button>
+                    </div>
+                  </form>
                 )}
-                
               </div>
-              <div className="modal-footer">
-              </div>
+              <div className="modal-footer"></div>
             </div>
           </div>
         </div>
