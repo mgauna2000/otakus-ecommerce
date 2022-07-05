@@ -10,9 +10,9 @@ para uso propio. Ha sido desarrollado usando react con sus hooks y bootstrap, fu
 
 Librerias utlizadas:
 
-react-router-dom 6.3.0 la cual permite implementar una navegación dinamica dentro de la aplicación web.
-firebase 9.8.3 se uso para poder guardar de forma externa la lista de los productos y las ordenes de compra generadas.
-sweetalert 2.1.2 utilizada para poder avisar que se añadio correctamente el producto al carrito de compra.
+* react-router-dom 6.3.0 la cual permite implementar una navegación dinamica dentro de la aplicación web.
+* firebase 9.8.3 se uso para poder guardar de forma externa la lista de los productos y las ordenes de compra generadas.
+* sweetalert 2.1.2 utilizada para poder avisar que se añadio correctamente el producto al carrito de compra.
 
 El sitio es responsive, lo que permitira que los usuarios puedan visualizarlo desde un dispositivo movil
 
