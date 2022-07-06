@@ -5,8 +5,7 @@ Abrir [http://localhost:3000](http://localhost:3000) para verlo en su navegador.
 
 ### `Ecommerce`
 
-El proyecto consta de hacer un Ecommerce dinamico donde se vendan articulos 
-para uso propio. Ha sido desarrollado usando react con sus hooks y bootstrap, fui sumando lo que hacemos clase a clase hasta llegar a la primera entrega.
+El proyecto consta de hacer un Ecommerce dinamico donde se vendan articulos para uso propio. Ha sido desarrollado usando react con sus hooks y bootstrap, fui sumando lo que haciamos clase a clase hasta llegar a realizar el proyecto final.
 
 Librerias utlizadas:
 
