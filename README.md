@@ -16,3 +16,6 @@ Librerias utlizadas:
 
 El sitio es responsive, lo que permitira que los usuarios puedan visualizarlo desde un dispositivo movil
 
+### `Tutorial de compra`
+
+https://drive.google.com/file/d/1Vi_pKr_yyoFS4vBHBhGGliq4ZPFuzQOB/view?usp=sharing
